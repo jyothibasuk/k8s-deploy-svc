@@ -1,0 +1,20 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: jk-deployment
+spec:
+  selector:
+    matchLabels:
+      app: jk-devops-project
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: valaxy-devops-project
+    spec:
+      containers:
+      - name: jk-devops-project
+        image: jyothibasuk/asp-app
+        ports:
+        - containerPort: 8080
+
